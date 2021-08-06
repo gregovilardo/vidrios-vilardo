@@ -1,0 +1,321 @@
+
+
+body {
+    background-color: white;
+    font-family: "Karla", sans-serif !important;
+    font-style: regular;
+    overflow-x: hidden;
+}
+
+.navbar {
+    transition: 0.8s ease;
+    padding: 0 0 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.logo {
+    transition: 0.8s ease;
+}
+
+.nav-color {
+    background-color: white;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.pad-bar {
+    padding: 0 8px;
+}
+
+.image-banner {
+    position: relative;
+    display: inline;
+    width: 100%;
+    height: 817px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image:linear-gradient(145deg, rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+.title-banner {
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+    font-family: "Noto Serif", serif;
+    font-style: italic;
+    z-index: 1000;
+}
+.title-banner h1 {
+    font-size: 4.5rem;
+}
+
+.info-banner {
+    position: relative;
+    font-style: normal;
+    left: 5%;
+    bottom: 1%;
+    font-size: 2.25rem;
+}
+
+.content {
+    margin: auto;
+    width: 80%;
+    height: 100%;
+}
+
+.titles {
+    position: relative;
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 3%;
+}
+
+.subrayado {
+    position: relative;
+    margin: auto;
+    height: 3px;
+    background-color: rgb(238, 98, 82);
+    border-radius: 20%;
+}
+
+.vid {
+    width: 6rem;
+    transition: 2s ease;
+}
+
+.titles h1:hover .vid {
+    width: 3rem;
+    transition: 2s ease;
+}
+
+.alum {
+    width: 9.5rem;
+    transition: 2s ease;
+}
+
+.titles h1:hover .alum {
+    width: 5rem;
+    transition: 2s ease;
+}
+
+.serv {
+    width: 10rem;
+    transition: 2s ease;
+}
+
+.titles:hover .serv {
+    width: 6rem;
+    transition: 2s ease;
+}
+
+.colocaciones {
+    background-color: #005691;
+    color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.cortes {
+    position: relative;
+    padding-left: 40%;
+    background-color: #005691;
+    color: whitesmoke;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 5px;
+}
+
+.cont {
+    width: 13rem;
+    transition: 2s ease;
+}
+
+.titles:hover .cont {
+    width: 7rem;
+    transition: 2s ease;
+}
+
+.color {
+    background-color: #fafafa;
+}
+
+.color-c {
+    background-color: #004a7c;
+}
+
+.color-u {
+    background-color: #00090f;
+    color: whitesmoke;
+}
+
+p {
+    font-family: "Karla", sans-serif !important;
+    font-size: large;
+}
+
+h2 {
+    font-family: "Karla", sans-serif !important;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+.form-control {
+    margin: auto;
+    width: 50%;
+}
+
+.form-label {
+    position: relative;
+    margin: auto;
+    left: 25%;
+    text-align: left !important;
+    font-family: "Karla", sans-serif;
+    font-size: large;
+    color: whitesmoke;
+}
+
+.boton {
+    position: relative;
+    left: 25%;
+    
+}
+
+.boton button {
+    width: 220px;
+    height: 50px;
+}
+
+.btn {
+    background-color: rgb(238, 98, 82);
+    color: white;
+    font-weight: 900;
+}
+
+.data {
+    position: relative;
+    left: 7%;
+}
+
+.trabajo-comp button {
+    position: relative;
+    display: inline;
+    top: 80%;
+    font-size: large;
+    border-radius: 0%;
+	cursor: pointer;
+	font-weight: bold;
+	color: black;
+	background: white;
+	border: 2px solid black;
+	transition: 500ms ease-in-out;
+}
+
+.trabajo-comp button:hover {
+    background: #0279c9ce;
+    color:whitesmoke
+}
+
+.trabajo-comp button:focus {
+	outline: none;
+}
+
+h3 {
+    font-weight: 800;
+}
+
+.mostrar-trabajo {
+    position:absolute;
+    z-index: 100;
+    width: 80%;
+    height: 80%;
+    background: black;
+}
+
+.submitted-msg{
+    position: relative;
+    color: whitesmoke;
+    top: -37px;
+    left: 20%;
+}
+
+@media(max-width:1213px) {
+    @media(min-width:984px) {
+        .trabajo-comp button{
+            padding: 5px;
+            font-size: small;
+            top:50%;
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .logo {
+        position: relative;
+        left: 15%;
+    }
+    .nav-left {
+        position: relative;
+        right: 15%;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        overflow-x: hidden;
+    }
+    .image-banner {
+        width: 100%;
+        height: 400px;
+    }
+    .title-banner h1 {
+        font-size: 42px;
+    }
+    .info-banner {
+        font-size: 16px;
+    }
+    .form-control {
+        margin: auto;
+        width: 80%;
+        left: 20px;
+    }
+
+    .form-label {
+        position: relative;
+        left: 10%;
+    }
+
+    .boton button {
+        position: relative;
+        width: 60%;
+        right: 15%;
+    }
+    #logo {
+        width: 60px;
+        height: 60px;
+    }
+    .trabajo-comp button{
+        top:50%;
+    }
+    /* .trabajo-comp img {
+        height: 200px;
+        width: 200px;
+    } */
+}
+
+@media (max-width: 1025px) {
+    .title-banner {
+        position: relative;
+        /* top:22% */
+    }
+
+    .submitted-msg{
+        position: relative;
+        color: whitesmoke;
+        top: 10px;
+        left: 0px;
+    }
+}
