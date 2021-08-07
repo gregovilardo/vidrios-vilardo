@@ -1,12 +1,10 @@
 import express, { urlencoded } from "express";
-import mailchimp from "@mailchimp/mailchimp_marketing";
 import cors from "cors";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 dotenv.config();
 
-const port = process.env.PORT || 4000;
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
@@ -16,58 +14,44 @@ app.use(
     })
 );
 
-// MAILCHIMP CONNECTION
-mailchimp.setConfig({
-    apiKey: process.env.API_KEY,
-    server: "us6",
+const port = process.env.PORT || 4000;
+//////////////////////////////MONGODB CONNECTION///////////////////////////////////////////
+const uri = `mongodb+srv://user1:${process.env.ATLAS_USER_PW}@vidriosvilardodb.gju8c.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", () => {
+    console.log("we are connected");
+});
+//////////////////////////////END MONGODB CONNECTION///////////////////////////////////////////
+
+const formSchema = new mongoose.Schema({
+    name: String,
+    location: String,
+    email: String,
+    phone: String,
+    message: String,
 });
 
-async function callPing() {
-    const response = await mailchimp.ping.get();
-    console.log(response);
-}
-
-callPing();
+const Form = mongoose.model("Form", formSchema);
 
 app.post("/contacto", (req, res) => {
     const { name, location, email, phone, message } = req.body;
-
-    let data = {
-        members: [
-            {
-                email_address: email,
-                status: "subscribed",
-                merge_fields: {
-                    NAME: name,
-                    ADDRESS: location,
-                    PHONE: phone,
-                    MESSAGE: message,
-                },
-            },
-        ],
-    };
-
-    var jsonData = JSON.stringify(data);
-
-    const run = async () => {
-        try {
-            const response = await mailchimp.lists.batchListMembers(
-                process.env.AUDIENCE_ID,
-                jsonData
-            );
-            console.log(response.new_members[0].status);
-        } catch (err) {
-            console.log(err);
+    const form = new Form({
+        name: name,
+        location: location,
+        email: email,
+        phone: phone,
+        message: message
+    })
+    form.save((err, forms) => {
+        if (err) {
+            console.log(err)
         }
-    };
+        console.log("saved in db \n" + forms)
+    })
 
-    run();
-
-    // res.status(201).json({"response": "server post loaded"})
-});
-
-app.get("/express_backend", (req, res) => {
-    res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
 });
 
 app.listen(port, () => {

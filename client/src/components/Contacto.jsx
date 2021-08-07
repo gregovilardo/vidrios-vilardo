@@ -108,7 +108,7 @@ function Contacto() {
                             rows="3"
                         ></textarea>
                         <div className="boton p-4 ps-0 pb-0">
-                            <button className="btn" type="submit">
+                            <button className="btn enviar" type="submit">
                                 Enviar
                             </button>
                             <div className="submitted-msg col-4">
