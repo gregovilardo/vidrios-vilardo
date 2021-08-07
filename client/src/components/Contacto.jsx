@@ -28,7 +28,8 @@ function Contacto() {
             message,
         };
         axios
-            .post("http://localhost:4000/contacto", userInput)
+        // i was using this http://localhost:4000/contacto changue it if its not working
+            .post("/contacto", userInput)
             .then(() => {
                 console.log("form submited");
             })
