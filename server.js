@@ -2,7 +2,7 @@ import express, { urlencoded } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { dirname } from "path";
+import path, { dirname } from "path";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
