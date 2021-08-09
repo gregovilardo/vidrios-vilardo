@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import path, { dirname } from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,20 +14,24 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const whitelist = ["http://localhost:3000", "http://localhost:4000", "https://vidrios-vilardo.herokuapp.com"]
+const whitelist = [
+    "http://localhost:3000",
+    "http://localhost:4000",
+    "https://vidrios-vilardo.herokuapp.com",
+];
 const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
+    origin: function (origin, callback) {
+        console.log("** Origin of request " + origin);
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            console.log("Origin acceptable");
+            callback(null, true);
+        } else {
+            console.log("Origin rejected");
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+};
+app.use(cors(corsOptions));
 
 const port = process.env.PORT || 4000;
 //////////////////////////////MONGODB CONNECTION///////////////////////////////////////////
@@ -53,29 +57,41 @@ const Form = mongoose.model("Form", formSchema);
 
 app.post("/contacto", (req, res) => {
     const { name, location, email, phone, message } = req.body;
-    const form = new Form({
+    Form.create({
         name: name,
         location: location,
         email: email,
         phone: phone,
-        message: message
-    })
-    form.save((err, forms) => {
-        if (err) {
-            console.log(err)
-        }
-        console.log("saved in db \n" + forms)
-    })
-
+        message: message,
+        function(err, res) {
+            if (err) {
+                console.log(err);
+            }
+            console.log("saved in db \n" + res);
+        },
+    });
+    // const form = new Form({
+    //     name: name,
+    //     location: location,
+    //     email: email,
+    //     phone: phone,
+    //     message: message
+    // })
+    // form.save((err, forms) => {
+    //     if (err) {
+    //         console.log(err)
+    //     }
+    //     console.log("saved in db \n" + forms)
+    // })
 });
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+if (process.env.NODE_ENV === "production") {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, "client/build")));
+    // Handle React routing, return all requests to React app
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    });
 }
 
 app.listen(port, () => {
