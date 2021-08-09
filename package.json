@@ -1,7 +1,6 @@
 {
   "name": "vidvil-react-express",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -25,5 +24,14 @@
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanzemaljack/vidrios-vilardo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vanzemaljack/vidrios-vilardo/issues"
+  },
+  "homepage": "https://github.com/vanzemaljack/vidrios-vilardo#readme",
+  "description": ""
 }

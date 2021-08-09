@@ -29,7 +29,7 @@ function Contacto() {
         };
         axios
         // i was using this http://localhost:4000/contacto changue it if its not working
-            .post("/contacto", userInput)
+            .post("https://vidrios-vilardo.herokuapp.com/contacto", userInput)
             .then(() => {
                 console.log("form submited");
             })
