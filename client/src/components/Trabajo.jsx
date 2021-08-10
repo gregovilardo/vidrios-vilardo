@@ -8,7 +8,7 @@ function Trabajo(props) {
     const img = `./img/${_.kebabCase(props.section)}/${_.kebabCase(
         props.product
     )}/min.jpg`;
-    
+
     function createArrayImg(section, product, n) {
         let imgArray = [{}];
 
@@ -39,7 +39,26 @@ function Trabajo(props) {
                 onClose={() => {
                     setVisible(false);
                 }}
-                images={createArrayImg(props.section, props.product, props.imgAmount)}
+                images={createArrayImg(
+                    props.section,
+                    props.product,
+                    props.imgAmount
+                )}
+                
+                customToolbar={(toolbar) => [
+                    { actionType: 1, key: "zoomIn" },
+                    { actionType: 2, key: "zoomOut" },
+                    { actionType: 3, key: "prev" },
+                    { actionType: 7, key: "reset" },
+                    { actionType: 4, key: "next" },
+                    {
+                        actionType: 6,
+                        key: "close",
+                        onClick: () => {
+                            setVisible(false);
+                        },
+                    },
+                ]}
             />
             <img src={img} className="img-fluid" alt="imagen de trabajos" />
         </div>
@@ -47,12 +66,3 @@ function Trabajo(props) {
 }
 
 export default Trabajo;
-
-// const images = {
-//     imgArray: [
-//         {
-//             src: `./img/${_.kebabCase(props.section)}/${_.kebabCase(props.product)}/${i}.jpeg`,
-//             alt: `${props.section} ${props.product}`,
-//         }
-//     ],
-// };
