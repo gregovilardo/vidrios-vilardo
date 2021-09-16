@@ -6,6 +6,6 @@ I made the **Front-End with React.js, Bootstrap and Material-ui** and the **Back
 
 All the design are made by myself including the logo. The tools that I use are Figma, Photoshop and Illustrator.
 
-I use one external API from google for the map, that you can see in the last section of the page.
+I use the **Google Map API** for the map that is on the "Ubicacion" section
 
 *To see the files go to the master branch*
