@@ -1,7 +1,7 @@
 # vidrios-vilardo
 ## This is a webpage for my father business
 
-Live: https://vidrios-vilardo-herokuapp.com
+Live: https://vidrios-vilardo.herokuapp.com
 
 All the page is powered using JavaScript.
 
